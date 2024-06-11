@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 
 export const getAbsolutePath = (file) => {
-  const absolutePath = path.resolve('__fixtures__', file);
+  const absolutePath = path.resolve(process.cwd(), '__fixtures__', file);
   return absolutePath;
 };
 
