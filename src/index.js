@@ -1,15 +1,19 @@
-// import path from 'path';
-// import fs from 'fs';
-// import { filepath1, filepath2 } from '/root/frontend-project-46/bin';
+import { getAbsolutePath, readFile } from './utils.js';
+import parse from './parse.js';
 
-// const dirPath = './__fixtures__';
-// const fileName = filepath1;
-// const filePath = path.join(dirPath, fileName);
+const gendiff = (file1, file2, format) => {
+  const fileContent1 = readFile(getAbsolutePath(file1));
+  const fileContent2 = readFile(getAbsolutePath(file2));
 
-// try {
-//   const result = fs.readFileSync(filePath, { encoding: 'utf-8' });
+  const result = parse(fileContent1, fileContent2);
 
-//   console.log(result);
-// } catch (err) {
-//   console.error(err);
-// }
+  console.log(result);
+};
+
+const compareFiles = (content1, content2) => {
+ 
+  return JSON.stringify(content1);
+  
+};
+
+export default gendiff;
