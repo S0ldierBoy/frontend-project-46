@@ -11,4 +11,5 @@ const gendiff = (file1, file2, format) => {
   const result = compareFiles(parsedFile1, parsedFile2);
   return result;
 };
+
 export default gendiff;
