@@ -12,8 +12,8 @@ program
   .argument('<filepath2>')
   .option('-f, --format <type>', 'output format')
   .action((filepath1, filepath2, options) => {
-    gendiff(filepath1, filepath2, options.format);
+    const result = gendiff(filepath1, filepath2, options.format);
+    console.log(result);
   });
 
-program.parse(process.argv);
-//.addValidator() метод валидации файлов
+program.parse();

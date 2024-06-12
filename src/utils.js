@@ -1,12 +1,12 @@
 import path from 'path';
 import fs from 'fs';
 
-export const getAbsolutePath = (file) => {
-  const absolutePath = path.resolve(process.cwd(), '__fixtures__', file);
-  return absolutePath;
+export const readFile = (filePath) => {
+  const dirName = process.cwd();
+  const fullPath = path.resolve(dirName, filePath);
+  return fs.readFileSync(fullPath, 'utf-8');
 };
 
-export const readFile = (filePath) => {
-  const file = fs.readFileSync(filePath, 'utf-8');
-  return file;
+export const parse = (file) => {
+  return JSON.parse(file);
 };

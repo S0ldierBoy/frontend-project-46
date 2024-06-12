@@ -1,19 +1,15 @@
-import { getAbsolutePath, readFile } from './utils.js';
-import parse from './parse.js';
+import { readFile, parse } from './utils.js';
+import compareFiles from './compareFiles.js';
 
 const gendiff = (file1, file2, format) => {
-  const fileContent1 = readFile(getAbsolutePath(file1));
-  const fileContent2 = readFile(getAbsolutePath(file2));
+  const fileContent1 = readFile(file1);
+  const fileContent2 = readFile(file2);
 
-  const result = parse(fileContent1, fileContent2);
+  const parsedFile1 = parse(fileContent1);
+  const parsedFile2 = parse(fileContent2);
 
-  console.log(result);
-};
-
-const compareFiles = (content1, content2) => {
- 
-  return JSON.stringify(content1);
-  
+  const result = compareFiles(parsedFile1, parsedFile2);
+  return result;
 };
 
 export default gendiff;

@@ -13,9 +13,9 @@
   "author": "Nick G",
   "license": "ISC",
   "dependencies": {
-    "commander": "^11.0.0"
+    "commander": "^11.0.0",
+    "lodash": "^4.17.21"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/S0ldierBoy/frontend-project-46.git"
@@ -23,5 +23,6 @@
   "bugs": {
     "url": "https://github.com/S0ldierBoy/frontend-project-46/issues"
   },
-  "homepage": "https://github.com/S0ldierBoy/frontend-project-46#readme"
+  "homepage": "https://github.com/S0ldierBoy/frontend-project-46#readme",
+  "keywords": []
 }
