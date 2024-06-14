@@ -10,3 +10,4 @@ export const readFile = (filePath) => {
 export const parse = (file) => {
   return JSON.parse(file);
 };
+

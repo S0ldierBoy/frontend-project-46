@@ -14,3 +14,4 @@ const gendiff = (file1, file2, format) => {
 };
 
 export default gendiff;
+

@@ -27,3 +27,4 @@ const compareFiles = (obj1, obj2) => {
 };
 
 export default compareFiles;
+
