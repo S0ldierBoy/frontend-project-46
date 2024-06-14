@@ -9,6 +9,7 @@ const gendiff = (file1, file2, format) => {
   const parsedFile2 = parse(fileContent2);
 
   const result = compareFiles(parsedFile1, parsedFile2);
+
   return result;
 };
 
