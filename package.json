@@ -8,13 +8,14 @@
     "gendiff": "bin/gendiff.js"
   },
   "scripts": {
-  "test": "jest",
-  "test-coverage": "jest --coverage --coverageProvider=v8"
+    "test": "jest",
+    "test-coverage": "jest --coverage --coverageProvider=v8"
   },
   "author": "Nick G",
   "license": "ISC",
   "dependencies": {
     "commander": "^11.0.0",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
     "semver": "^7.6.2"
   },
