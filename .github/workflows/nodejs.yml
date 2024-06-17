@@ -38,13 +38,11 @@ jobs:
       # - name: Test & publish code coverage
       #   # Publish code coverage on Code Climate
       #   # https://github.com/paambaati/codeclimate-action
-      #   uses: paambaati/codeclimate-action@v5.0.0
+        uses: paambaati/codeclimate-action@v5.0.0
       #   # Add Code Climate secret key
         env:
-           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-           JACOCO_SOURCE_PATH: app/src/main/java
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-           coverageCommand: make test-coverage
-           coverageLocations: ${{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
-           debug: true
-
+          coverageCommand: make test-coverage
+          coverageLocations: ${{github.workspace}}/coverage/lcov.info:lcov # Замените на ваш путь к файлу отчета о покрытии
+          debug: true
