@@ -23,7 +23,8 @@ jobs:
       # Check-out repository under GitHub workspace
       # https://github.com/actions/checkout
       - uses: actions/checkout@v4
-        # Step's name
+
+      # Step's name
       - name: Use Node.js ${{ matrix.node-version }}
         # Configures the node version used on GitHub-hosted runners
         # https://github.com/actions/setup-node
@@ -32,14 +33,22 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
+
       - run: make install
       - run: make lint
       - run: make test
-      # - name: Test & publish code coverage
-      #   # Publish code coverage on Code Climate
-      #   # https://github.com/paambaati/codeclimate-action
+
+      # Install Code Climate Test Reporter
+      - name: Install Code Climate Test Reporter
+        run: |
+          mkdir -p tmp/
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
+          chmod +x ./tmp/cc-test-reporter
+
+      - name: Test & publish code coverage
+        # Publish code coverage on Code Climate
+        # https://github.com/paambaati/codeclimate-action
         uses: paambaati/codeclimate-action@v5.0.0
-      #   # Add Code Climate secret key
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
