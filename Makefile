@@ -12,4 +12,4 @@ test:
 
 test-coverage:
 
-        npm test -- --coverage --coverageReporters=lcov
+	npm test -- --coverage --coverageReporters=lcov
