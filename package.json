@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "test:coverage": "jest --coverage"
+    "test-coverage": "jest --coverage --coverageProvider=v8"
   },
   "author": "Nick G",
   "license": "ISC",
