@@ -1,9 +1,13 @@
 import yaml from 'js-yaml';
 
-export const yamlParser = (file) => {
-  return yaml.load(file);
-};
-
-export const jsonParser = (file) => {
-  return JSON.parse(file);
+export const parse = (data, ext) => {
+  switch (ext) {
+    case '.json':
+      return JSON.parse(data);
+    case '.yml':
+    case '.yaml':
+      return yaml.load(data);
+    default:
+      throw new Error(`Unsupported file format: ${ext}`);
+  }
 };

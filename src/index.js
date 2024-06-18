@@ -1,23 +1,23 @@
 import { readFile } from './utils.js';
 import compareFiles from './compareFiles.js';
 import { toString } from './dataOutput.js';
-import { jsonParser, yamlParser } from './parsers.js';
+import { parse } from './parsers.js';
+import { extname } from 'path';
 
-const genDiff = (file1, file2, format) => {
+const genDiff = (file1, file2, format = 'stylish') => {
   const fileContent1 = readFile(file1);
   const fileContent2 = readFile(file2);
 
-  const parsedJsonFile1 = jsonParser(fileContent1);
-  const parsedJsonFile2 = jsonParser(fileContent2);
+  const ext1 = extname(file1);
+  const ext2 = extname(file2);
 
-  const parsedYmlFile1 = yamlParser(fileContent1);
-  const parsedYmlFile2 = yamlParser(fileContent2);
+  const parsedData1 = parse(fileContent1, ext1);
+  const parsedData2 = parse(fileContent2, ext2);
 
-  if (format === 'json') {
-    return toString(compareFiles(parsedJsonFile1, parsedJsonFile2));
-  } else if (format === 'yml' || 'yaml') {
-    return toString(compareFiles(parsedYmlFile1, parsedYmlFile2));
-  }
+  const comparedFiles = compareFiles(parsedData1, parsedData2);
+
+  const result = toString(comparedFiles);
+  return result;
 };
 
 export default genDiff;
