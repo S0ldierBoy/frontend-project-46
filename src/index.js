@@ -8,7 +8,7 @@ const genDiff = (file1, file2, format = 'stylish') => {
   const fileContent1 = readFile(file1);
   const fileContent2 = readFile(file2);
 
-  const ext1 = extname(file1);
+  const ext1 = extname(file1); // получаем формат расширения .json и тд.
   const ext2 = extname(file2);
 
   const parsedData1 = parse(fileContent1, ext1);
