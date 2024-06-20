@@ -1,8 +1,9 @@
 import _ from 'lodash';
 
-const renderDiff = (tree, depth = 1) => {
-  const indent = ' '.repeat(depth * 1);
-  const bracketIndent = ' '.repeat((depth - 1) * 2);
+const renderDiff = (tree, depth = 2) => {
+  const indentSize = 4;
+  const indent = ' '.repeat(depth * indentSize - 2);
+  const bracketIndent = ' '.repeat((depth - 1) * indentSize);
 
   const lines = tree.map((node) => {
     switch (node.type) {
@@ -18,7 +19,7 @@ const renderDiff = (tree, depth = 1) => {
           `${indent}+ ${node.key}: ${formatValue(node.newValue, depth + 1)}`,
         ].join('\n');
       case 'unchanged': // есть во всех датах значения одинаковы
-        return `${indent}  ${node.key}: ${formatValue(node.value, depth + 1)}`;
+        return `${indent}${node.key}: ${formatValue(node.value, depth + 1)}`;
       default:
         throw new Error(`Unknown type: ${node.type}`);
     }
@@ -28,8 +29,9 @@ const renderDiff = (tree, depth = 1) => {
 
 const formatValue = (value, depth) => {
   if (_.isObject(value) && !Array.isArray(value)) {
-    const indent = ' '.repeat(depth * 2);
-    const bracketIndent = ' '.repeat((depth - 1) * 2);
+    const indentSize = 4;
+    const indent = ' '.repeat(depth * indentSize);
+    const bracketIndent = ' '.repeat((depth - 1) * indentSize);
 
     const lines = _.keys(value)
       .sort()
