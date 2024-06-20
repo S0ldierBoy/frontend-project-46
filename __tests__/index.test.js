@@ -8,7 +8,12 @@ test('test for JSON format', () => {
   expect(result).toEqual(expected);
 });
 
-test('test for Yaml/Yml formats ', () => {
+test('test for plain formats ', () => {
   const result = genDiff('file1.yml', 'file2.yml', 'ymal');
+  expect(result).toEqual(expected);
+});
+
+test('test for stylish formats ', () => {
+  const result = genDiff('file1.yml', 'file2.yml', 'stylish');
   expect(result).toEqual(expected);
 });
