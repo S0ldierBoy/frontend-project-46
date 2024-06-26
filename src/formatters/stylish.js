@@ -1,25 +1,28 @@
 import _ from 'lodash';
 
-const renderDiff = (tree, depth = 2) => {
+const renderDiff = (tree, depth = 1) => {
   const indentSize = 4;
   const indent = ' '.repeat(depth * indentSize - 2);
   const bracketIndent = ' '.repeat((depth - 1) * indentSize);
 
   const lines = tree.map((node) => {
     switch (node.type) {
-      case 'nested': // есть вложенные объекты
-        return `${indent}${node.key}: ${renderDiff(node.children, depth + 1)}`;
-      case 'added': // присутствует только в дата2
+      case 'nested':
+        return `${indent}  ${node.key}: ${renderDiff(
+          node.children,
+          depth + 1
+        )}`;
+      case 'added':
         return `${indent}+ ${node.key}: ${formatValue(node.value, depth + 1)}`;
-      case 'removed': // присутствует только в дата1
+      case 'removed':
         return `${indent}- ${node.key}: ${formatValue(node.value, depth + 1)}`;
-      case 'changed': // есть во всех датах, но разные значения
+      case 'changed':
         return [
           `${indent}- ${node.key}: ${formatValue(node.oldValue, depth + 1)}`,
           `${indent}+ ${node.key}: ${formatValue(node.newValue, depth + 1)}`,
         ].join('\n');
-      case 'unchanged': // есть во всех датах значения одинаковы
-        return `${indent}${node.key}: ${formatValue(node.value, depth + 1)}`;
+      case 'unchanged':
+        return `${indent}  ${node.key}: ${formatValue(node.value, depth + 1)}`;
       default:
         throw new Error(`Unknown type: ${node.type}`);
     }
@@ -37,7 +40,7 @@ const formatValue = (value, depth) => {
       .sort()
       .map((key) => {
         const val = value[key];
-        return `${indent}  ${key}: ${formatValue(val, depth + 1)}`;
+        return `${indent}${key}: ${formatValue(val, depth + 1)}`;
       });
     return ['{', ...lines, `${bracketIndent}}`].join('\n');
   }
