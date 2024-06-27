@@ -5,7 +5,7 @@
 [![Node CI](https://github.com/S0ldierBoy/frontend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/S0ldierBoy/frontend-project-46/actions/workflows/nodejs.yml)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2b9d43d672c7c9a971c9/test_coverage)](https://codeclimate.com/github/S0ldierBoy/frontend-project-46/test_coverage)
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=25&duration=2500&pause=1000&color=503DF7&center=true&random=false&width=435&height=60&lines=GENDIFF" alt="Typing SVG" /></a>
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=25&duration=2500&pause=1000&color=503DF7&center=true&random=false&width=435&height=60&lines=%D0%9E%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5+%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0%3A)](https://git.io/typing-svg)
 
 **gendiff** – это утилита для сравнения двух файлов. Она отображает различия между файлами в человекочитаемом виде.
 
@@ -14,6 +14,10 @@
 - Поддержка JSON и YAML файлов
 - Простота использования из командной строки
 - Удобный вывод различий в форматах json, stylish, plain
+
+### Системные требования:
+
+Для запуска приложения требуется наличие интерпретатора языка программирования Python версии 3.6 и выше. Поддерживаются операционные системы Windows, macOS и Linux.
 
 ### Пример использования:
 

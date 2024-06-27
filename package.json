@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/S0ldierBoy/frontend-project-46/workflows/hexlet-check/badge.svg)](https://github.com/S0ldierBoy/frontend-project-46/actions)",
+  "description": "Проект для школы Хекслет",
   "main": "index.js",
   "type": "module",
   "bin": {
@@ -9,7 +9,8 @@
   },
   "scripts": {
     "test": "jest",
-    "test-coverage": "jest --coverage --coverageProvider=v8"
+    "test-coverage": "jest --coverage --coverageProvider=v8",
+    "lint": "eslint ."
   },
   "author": "Nick G",
   "license": "ISC",
