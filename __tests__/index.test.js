@@ -3,11 +3,12 @@ import genDiff from '../src/index.js';
 
 let stylishExpected = readFile('expected_file.stylish.txt');
 let plainExpected = readFile('expected_file.plain.txt');
+let jsonExpected = readFile('expected_file.json.txt');
 
-// test('test for JSON format', () => {
-//   const result = genDiff('file1.json', 'file2.json', 'json');
-//   expect(result).toEqual(expected);
-// });
+test('test for JSON format', () => {
+  const result = genDiff('file1.json', 'file2.json', 'json');
+  expect(result).toEqual(jsonExpected);
+});
 
 test('test for plain formats ', () => {
   const result = genDiff('file1.yml', 'file2.yml', 'plain');

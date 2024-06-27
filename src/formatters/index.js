@@ -7,8 +7,8 @@ const outputController = (data, format) => {
       return renderDiff(data);
     case 'plain':
       return formatPlain(data);
-    // case 'json':
-    //   return 'j';
+    case 'json':
+      return JSON.stringify(data, null, 2);
     default:
       throw new Error(`Unsupported file format: ${format}`);
   }
