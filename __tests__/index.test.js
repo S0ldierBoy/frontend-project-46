@@ -1,5 +1,5 @@
 import { readFile } from '../src/utils.js';
-import genDiff from '../src/index.js';
+import genDiff from '../index.js';
 
 const expectedResults = {
   stylish: readFile('expected_file.stylish.txt'),

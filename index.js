@@ -1,8 +1,8 @@
-import { readFile } from './utils.js';
-import comparer from './comparer.js';
-import { parse } from './parsers.js';
+import { readFile } from './src/utils.js';
+import comparer from './src/comparer.js';
+import { parse } from './src/parsers.js';
 import { extname } from 'path';
-import outputController from './formatters/index.js';
+import outputController from './src/formatters/index.js';
 
 const genDiff = (file1, file2, format) => {
   const fileContent1 = readFile(file1);
