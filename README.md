@@ -24,6 +24,9 @@
 > Демонстрацию работы можно посмотреть, кликнув на название формата:
 
 **"help"** - [вывод справочной информации по утилите.](https://asciinema.org/a/rZtOM9tPNUdhbGW2HMFlno8nS)
+
 **"stylish"** - [результат сравнения в формате stylish.](https://asciinema.org/a/wGSHmcdGfjHdc2V0yK8K40M8F)
+
 **"plain"** - [результат сравнения в формате plain.](https://asciinema.org/a/PNvw9zls91wp4PIayTMF21cUO)
+
 **"json"** - [результат сравнения в формате json.](https://asciinema.org/a/4i9nwuoIbK1vqjaqm3LOEDAn9)
