@@ -1,21 +1,21 @@
 import { readFile } from '../src/utils.js';
 import genDiff from '../src/index.js';
 
-let stylishExpected = readFile('expected_file.stylish.txt');
-let plainExpected = readFile('expected_file.plain.txt');
-let jsonExpected = readFile('expected_file.json.txt');
+const expectedResults = {
+  stylish: readFile('expected_file.stylish.txt'),
+  plain: readFile('expected_file.plain.txt'),
+  json: readFile('expected_file.json.txt'),
+};
 
-test('test for JSON format', () => {
-  const result = genDiff('file1.json', 'file2.json', 'json');
-  expect(result).toEqual(jsonExpected);
-});
+const testCases = [
+  ['JSON format', 'file1.json', 'file2.json', 'json'],
+  ['plain format', 'file1.yml', 'file2.yml', 'plain'],
+  ['stylish format', 'file1.yml', 'file2.yml', 'stylish'],
+];
 
-test('test for plain formats ', () => {
-  const result = genDiff('file1.yml', 'file2.yml', 'plain');
-  expect(result).toEqual(plainExpected);
-});
-
-test('test for stylish formats ', () => {
-  const result = genDiff('file1.yml', 'file2.yml', 'stylish');
-  expect(result).toEqual(stylishExpected);
+describe('genDiff function', () => {
+  test.each(testCases)('test for %s', (_, file1, file2, format) => {
+    const result = genDiff(file1, file2, format);
+    expect(result).toEqual(expectedResults[format]);
+  });
 });
