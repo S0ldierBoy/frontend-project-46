@@ -1,0 +1,8 @@
+{"version": 2, "width": 198, "height": 48, "timestamp": 1719519498, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.035255, "o", "\u001b[?2004h💻 \u001b[1;34mfrontend-project-46\u001b[m\u001b[32m (main)\u001b[00m $ "]
+[1.738602, "o", "\u001b[7mgendiff -h \u001b[27m"]
+[4.040484, "o", "\b\b\b\b\b\b\b\b\b\b\bgendiff -h \r\n"]
+[4.040663, "o", "\u001b[?2004l\r"]
+[4.093194, "o", "Usage: gendiff [options] <filepath1> <filepath2>\r\n\r\nCompares two configuration files and shows a difference.\r\n\r\nOptions:\r\n  -V, --version        output the version number\r\n  -f, --format <type>  output format (default: \"stylish\")\r\n  -h, --help           display help for command\r\n"]
+[4.101034, "o", "\u001b[?2004h💻 \u001b[1;34mfrontend-project-46\u001b[m\u001b[32m (main)\u001b[00m $ "]
+[6.473041, "o", "\u001b[?2004l\r\r\nexit\r\n"]
