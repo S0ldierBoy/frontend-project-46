@@ -1,10 +1,18 @@
 import _ from 'lodash';
 
+const getIndent = (depth, spaceCount = 4, withSign = false) => {
+  const baseIndent = ' '.repeat(depth * spaceCount);
+  return withSign ? baseIndent.slice(2) : baseIndent;
+};
+
+const getBracketIndent = (depth, spaceCount = 4) => {
+  return ' '.repeat((depth - 1) * spaceCount);
+};
+
 const formatValue = (value, depth) => {
   if (_.isObject(value) && !Array.isArray(value)) {
-    const indentSize = 4;
-    const indent = ' '.repeat(depth * indentSize);
-    const bracketIndent = ' '.repeat((depth - 1) * indentSize);
+    const indent = getIndent(depth);
+    const bracketIndent = getBracketIndent(depth);
 
     const lines = _.keys(value)
       .sort()
@@ -18,9 +26,8 @@ const formatValue = (value, depth) => {
 };
 
 const renderDiff = (tree, depth = 1) => {
-  const indentSize = 4;
-  const indent = ' '.repeat(depth * indentSize - 2);
-  const bracketIndent = ' '.repeat((depth - 1) * indentSize);
+  const indent = getIndent(depth, 4, true);
+  const bracketIndent = getBracketIndent(depth);
 
   const lines = tree.map((node) => {
     switch (node.type) {
