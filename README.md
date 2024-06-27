@@ -5,7 +5,7 @@
 [![Node CI](https://github.com/S0ldierBoy/frontend-project-46/actions/workflows/nodejs.yml/badge.svg)](https://github.com/S0ldierBoy/frontend-project-46/actions/workflows/nodejs.yml)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2b9d43d672c7c9a971c9/test_coverage)](https://codeclimate.com/github/S0ldierBoy/frontend-project-46/test_coverage)
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=25&duration=2500&pause=1000&color=503DF7&center=true&random=false&width=435&lines=GENDIFF)](https://git.io/typing-svg)
+<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=600&size=25&duration=2500&pause=1000&color=503DF7&center=true&random=false&width=435&height=60&lines=GENDIFF" alt="Typing SVG" /></a>
 
 **gendiff** – это утилита для сравнения двух файлов. Она отображает различия между файлами в человекочитаемом виде.
 
