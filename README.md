@@ -9,3 +9,5 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2b9d43d672c7c9a971c9/test_coverage)](https://codeclimate.com/github/S0ldierBoy/frontend-project-46/test_coverage)
 
 https://asciinema.org/a/rZtOM9tPNUdhbGW2HMFlno8nS
+
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&random=false&width=435&lines=gendiff+-h+)](https://git.io/typing-svg)
