@@ -4,7 +4,7 @@ import fs from 'fs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 export const getFixturePath = (filename) => {
-  return path.join(__dirname, '..', '..', '__fixtures__', filename);
+  return path.join(__dirname, '..', '__fixtures__', filename);
 };
 
 export const readFile = (filename) => {
