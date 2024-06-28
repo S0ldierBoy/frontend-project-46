@@ -4,7 +4,7 @@ import { parse } from './src/parsers.js';
 import { extname } from 'path';
 import outputController from './src/formatters/index.js';
 
-const genDiff = (file1, file2, format) => {
+const gendiff = (file1, file2, format) => {
   const fileContent1 = readFile(file1);
   const fileContent2 = readFile(file2);
 
@@ -20,4 +20,4 @@ const genDiff = (file1, file2, format) => {
   return resultDiff;
 };
 
-export default genDiff;
+export default gendiff;
