@@ -1,10 +1,22 @@
-import { readFile } from '../src/utils.js';
 import genDiff from '../index.js';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
+
+const readFixture = (filename) => {
+  const filePath = getFixturePath(filename);
+  return fs.readFileSync(filePath, 'utf-8');
+};
 
 const expectedResults = {
-  stylish: readFile('expectedStylish.txt'),
-  plain: readFile('expectedPlain.txt'),
-  json: readFile('expectedJson.txt'),
+  stylish: readFixture('expectedStylish.txt'),
+  plain: readFixture('expectedPlain.txt'),
+  json: readFixture('expectedJson.txt'),
 };
 
 const testCases = [
@@ -15,7 +27,9 @@ const testCases = [
 
 describe('genDiff function', () => {
   test.each(testCases)('test for %s', (_, file1, file2, format) => {
-    const result = genDiff(file1, file2, format);
+    const filepath1 = getFixturePath(file1);
+    const filepath2 = getFixturePath(file2);
+    const result = genDiff(filepath1, filepath2, format);
     expect(result).toEqual(expectedResults[format]);
   });
 });
