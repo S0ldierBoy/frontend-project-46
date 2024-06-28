@@ -1,7 +1,7 @@
 import renderDiff from './stylish.js';
 import formatPlain from './plain.js';
 
-const outputController = (data, format) => {
+const outputController = (data, format = 'stylish') => {
   switch (format) {
     case 'stylish':
       return renderDiff(data);
