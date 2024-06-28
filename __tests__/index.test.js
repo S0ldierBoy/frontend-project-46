@@ -2,9 +2,9 @@ import { readFile } from '../src/utils.js';
 import genDiff from '../index.js';
 
 const expectedResults = {
-  stylish: readFile('expected_file.stylish.txt'),
-  plain: readFile('expected_file.plain.txt'),
-  json: readFile('expected_file.json.txt'),
+  stylish: readFile('expectedStylish.txt'),
+  plain: readFile('expectedPlain.txt'),
+  json: readFile('expectedJson.txt'),
 };
 
 const testCases = [
