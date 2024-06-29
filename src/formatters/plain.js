@@ -5,15 +5,17 @@ const formatValue = (value) => {
   return typeof value === 'string' ? `'${value}'` : String(value);
 };
 
-const formatPlain = (data, path = '') => {
-  const result = data.reduce((acc, item) => {
+const formatPlain = (data, path = '') => data
+  .reduce((acc, item) => {
     const newPath = path ? `${path}.${item.key}` : item.key;
 
-    let updatedAcc = acc;
+    const updatedAcc = [...acc]; // Создаем копию массива acc для неизменяемости
 
     if (item.type === 'nested') {
-      updatedAcc = updatedAcc.concat(formatPlain(item.children, newPath));
-    } else if (item.type === 'added') {
+      return updatedAcc.concat(formatPlain(item.children, newPath));
+    }
+
+    if (item.type === 'added') {
       const formattedValue = formatValue(item.value);
       updatedAcc.push(
         `Property '${newPath}' was added with value: ${formattedValue}`,
@@ -29,9 +31,7 @@ const formatPlain = (data, path = '') => {
     }
 
     return updatedAcc;
-  }, []);
-
-  return result.join('\n');
-};
+  }, [])
+  .join('\n');
 
 export default formatPlain;
