@@ -16,7 +16,7 @@ const formatPlain = (data, path = '') => {
     } else if (item.type === 'added') {
       const formattedValue = formatValue(item.value);
       updatedAcc.push(
-        `Property '${newPath}' was added with value: ${formattedValue}`,
+        `Property '${newPath}' was added with value: ${formattedValue}`
       );
     } else if (item.type === 'removed') {
       updatedAcc.push(`Property '${newPath}' was removed`);
@@ -24,7 +24,7 @@ const formatPlain = (data, path = '') => {
       const oldValue = formatValue(item.oldValue);
       const newValue = formatValue(item.newValue);
       updatedAcc.push(
-        `Property '${newPath}' was updated. From ${oldValue} to ${newValue}`,
+        `Property '${newPath}' was updated. From ${oldValue} to ${newValue}`
       );
     }
 
