@@ -9,23 +9,21 @@ const formatPlain = (data, path = '') => data
   .reduce((acc, item) => {
     const newPath = path ? `${path}.${item.key}` : item.key;
 
-    const updatedAcc = [...acc]; // Создаем копию массива acc для неизменяемости
+    let updatedAcc = acc; // Используем let для обновления ссылки на массив
 
     if (item.type === 'nested') {
-      return updatedAcc.concat(formatPlain(item.children, newPath));
-    }
-
-    if (item.type === 'added') {
+      updatedAcc = updatedAcc.concat(formatPlain(item.children, newPath));
+    } else if (item.type === 'added') {
       const formattedValue = formatValue(item.value);
-      updatedAcc.push(
+      updatedAcc = updatedAcc.concat(
         `Property '${newPath}' was added with value: ${formattedValue}`,
       );
     } else if (item.type === 'removed') {
-      updatedAcc.push(`Property '${newPath}' was removed`);
+      updatedAcc = updatedAcc.concat(`Property '${newPath}' was removed`);
     } else if (item.type === 'changed') {
       const oldValue = formatValue(item.oldValue);
       const newValue = formatValue(item.newValue);
-      updatedAcc.push(
+      updatedAcc = updatedAcc.concat(
         `Property '${newPath}' was updated. From ${oldValue} to ${newValue}`,
       );
     }
