@@ -1,6 +1,6 @@
 import yaml from 'js-yaml';
 
-export const parse = (data, ext) => {
+const parse = (data, ext) => {
   switch (ext) {
     case '.json':
       return JSON.parse(data);
@@ -11,3 +11,4 @@ export const parse = (data, ext) => {
       throw new Error(`Unsupported file format: ${ext}`);
   }
 };
+export default parse;

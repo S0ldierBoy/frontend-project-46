@@ -5,26 +5,33 @@ const formatValue = (value) => {
   return typeof value === 'string' ? `'${value}'` : String(value);
 };
 
-const formatPlain = (data, path = '') => data
-  .reduce((result, item) => {
+const formatPlain = (data, path = '') => {
+  const result = data.reduce((acc, item) => {
     const newPath = path ? `${path}.${item.key}` : item.key;
 
+    let updatedAcc = acc;
+
     if (item.type === 'nested') {
-      result = result.concat(formatPlain(item.children, newPath));
+      updatedAcc = updatedAcc.concat(formatPlain(item.children, newPath));
     } else if (item.type === 'added') {
-      const value = formatValue(item.value);
-      result.push(`Property '${newPath}' was added with value: ${value}`);
+      const formattedValue = formatValue(item.value);
+      updatedAcc.push(
+        `Property '${newPath}' was added with value: ${formattedValue}`,
+      );
     } else if (item.type === 'removed') {
-      result.push(`Property '${newPath}' was removed`);
+      updatedAcc.push(`Property '${newPath}' was removed`);
     } else if (item.type === 'changed') {
       const oldValue = formatValue(item.oldValue);
       const newValue = formatValue(item.newValue);
-      result.push(
+      updatedAcc.push(
         `Property '${newPath}' was updated. From ${oldValue} to ${newValue}`,
       );
     }
-    return result;
-  }, [])
-  .join('\n');
+
+    return updatedAcc;
+  }, []);
+
+  return result.join('\n');
+};
 
 export default formatPlain;
