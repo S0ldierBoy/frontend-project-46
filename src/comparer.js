@@ -7,10 +7,10 @@ const comparer = (obj1, obj2) => {
     const value1 = obj1[key];
     const value2 = obj2[key];
     if (
-      _.isObject(value1) &&
-      _.isObject(value2) &&
-      !Array.isArray(value1) &&
-      !Array.isArray(value2)
+      _.isObject(value1)
+      && _.isObject(value2)
+      && !Array.isArray(value1)
+      && !Array.isArray(value2)
     ) {
       return { key, type: 'nested', children: comparer(value1, value2) };
     }
@@ -21,7 +21,9 @@ const comparer = (obj1, obj2) => {
       return { key, type: 'removed', value: value1 };
     }
     if (!_.isEqual(value1, value2)) {
-      return { key, type: 'changed', oldValue: value1, newValue: value2 };
+      return {
+        key, type: 'changed', oldValue: value1, newValue: value2,
+      };
     }
     return { key, type: 'unchanged', value: value1 };
   });

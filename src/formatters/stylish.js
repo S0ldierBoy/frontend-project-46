@@ -5,9 +5,7 @@ const getIndent = (depth, spaceCount = 4, withSign = false) => {
   return withSign ? baseIndent.slice(2) : baseIndent;
 };
 
-const getBracketIndent = (depth, spaceCount = 4) => {
-  return ' '.repeat((depth - 1) * spaceCount);
-};
+const getBracketIndent = (depth, spaceCount = 4) => ' '.repeat((depth - 1) * spaceCount);
 
 const formatValue = (value, depth) => {
   if (_.isObject(value) && !Array.isArray(value)) {
@@ -34,7 +32,7 @@ const renderDiff = (tree, depth = 1) => {
       case 'nested':
         return `${indent}  ${node.key}: ${renderDiff(
           node.children,
-          depth + 1
+          depth + 1,
         )}`;
       case 'added':
         return `${indent}+ ${node.key}: ${formatValue(node.value, depth + 1)}`;
