@@ -26,10 +26,13 @@ const testCases = [
 ];
 
 describe('genDiff function', () => {
-  test.each(testCases)('test for %s', (_, file1, file2, format) => {
-    const filepath1 = getFixturePath(file1);
-    const filepath2 = getFixturePath(file2);
-    const result = genDiff(filepath1, filepath2, format);
-    expect(result).toEqual(expectedResults[format]);
-  });
+  test.each(testCases)(
+    'should generate correct diff for %s',
+    (_, file1, file2, format) => {
+      const filepath1 = getFixturePath(file1);
+      const filepath2 = getFixturePath(file2);
+      const result = genDiff(filepath1, filepath2, format);
+      expect(result).toEqual(expectedResults[format]);
+    },
+  );
 });
