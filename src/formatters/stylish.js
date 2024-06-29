@@ -12,8 +12,7 @@ const formatValue = (value, depth) => {
     const indent = getIndent(depth);
     const bracketIndent = getBracketIndent(depth);
 
-    const lines = _.keys(value)
-      .sort()
+    const lines = _.sortBy(_.keys(value))
       .map((key) => {
         const val = value[key];
         return `${indent}${key}: ${formatValue(val, depth + 1)}`;
