@@ -14,10 +14,10 @@ const comparer = (obj1, obj2) => {
     ) {
       return { key, type: 'nested', children: comparer(value1, value2) };
     }
-    if (!obj1.hasOwnProperty(key)) {
+    if (!_.hasIn(obj1, key)) {
       return { key, type: 'added', value: value2 };
     }
-    if (!obj2.hasOwnProperty(key)) {
+    if (!_.hasIn(obj2, key)) {
       return { key, type: 'removed', value: value1 };
     }
     if (!_.isEqual(value1, value2)) {
