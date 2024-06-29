@@ -5,31 +5,26 @@ const formatValue = (value) => {
   return typeof value === 'string' ? `'${value}'` : String(value);
 };
 
-const formatPlain = (data, path = '') => data
-  .reduce((acc, item) => {
-    const newPath = path ? `${path}.${item.key}` : item.key;
+const formatPlain = (data, path = '') => data.reduce((acc, item) => {
+  const newPath = path ? `${path}.${item.key}` : item.key;
 
-    let updatedAcc = acc; // Используем let для обновления ссылки на массив
+  if (item.type === 'nested') {
+    return acc.concat(formatPlain(item.children, newPath));
+  }
+  if (item.type === 'added') {
+    const formattedValue = formatValue(item.value);
+    return acc.concat(`Property '${newPath}' was added with value: ${formattedValue}`);
+  }
+  if (item.type === 'removed') {
+    return acc.concat(`Property '${newPath}' was removed`);
+  }
+  if (item.type === 'changed') {
+    const oldValue = formatValue(item.oldValue);
+    const newValue = formatValue(item.newValue);
+    return acc.concat(`Property '${newPath}' was updated. From ${oldValue} to ${newValue}`);
+  }
 
-    if (item.type === 'nested') {
-      updatedAcc = updatedAcc.concat(formatPlain(item.children, newPath));
-    } else if (item.type === 'added') {
-      const formattedValue = formatValue(item.value);
-      updatedAcc = updatedAcc.concat(
-        `Property '${newPath}' was added with value: ${formattedValue}`,
-      );
-    } else if (item.type === 'removed') {
-      updatedAcc = updatedAcc.concat(`Property '${newPath}' was removed`);
-    } else if (item.type === 'changed') {
-      const oldValue = formatValue(item.oldValue);
-      const newValue = formatValue(item.newValue);
-      updatedAcc = updatedAcc.concat(
-        `Property '${newPath}' was updated. From ${oldValue} to ${newValue}`,
-      );
-    }
-
-    return updatedAcc;
-  }, [])
-  .join('\n');
+  return acc; // в случае 'unchanged' просто возвращаем acc без изменений
+}, []).join('\n');
 
 export default formatPlain;
